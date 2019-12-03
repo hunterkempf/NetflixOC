@@ -39,6 +39,28 @@ IMDB rating seems to have a correlation with the Status of the show and at a hig
 
 Despite not having much data to work with and using a simple model the accuracy in predicting the Status of a show is pretty decent. It would be interesting to get more general data on other companies and content to see how it can compare.
 
+## Evaluating Analysis Results
+
+### Questions: 
+
+1. Just how much more Original Content is Netflix making in compared to when they first started making it in 2013? 
+1. What are the rating trends for Netflix’s Original Content? What types of Content are successful? 
+1. And finally can we predict if Netflix will renew or cancel a show?
+
+### Question 1 Results 
+
+Netflix is making significantly more content in 2017 from when it first started making original content in 2013. From the monthly rates in 2013 to the monthly premier rates in 2017 there was a ~750% increase in the rate at which netflix has been premiering new original content
+
+### Question 2 Results
+
+As a whole the mean rating for Original Content shows that Netflix has been producing has been falling. Having said this the drop in IMDB Rating is because Netflix is producing more low quality content but not because Netflix is producing less high rated content. This means that users may have to sift through some more poor quality content but in general there is more high quality content available for them to watch.
+
+As far as the types of content that have high ratings Netflix is most proficient at making Drama, Marvel, Foreign Language and Docu-Series. These genres have produced the best ratings of netflix shows. Interestingly all of these categories except foreign language seem to have average runtimes between 45 min and 70 min.
+
+### Question 3 Results
+
+Yes we can sucessfully model our data! For how few observations and features we have and for the simple linear regression model I chose the f1 score results in the .67 range is actually pretty impressive. Furthermore this modeling can be applied to shows that we have in the pending status to give us some insights into which shows may be cancelled or renewed.
+
 ## Next Steps / Areas for Improvement
 
 ### Next Steps
