@@ -13116,14 +13116,36 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Netflix-Originals-Analysis">Netflix Originals Analysis<a class="anchor-link" href="#Netflix-Originals-Analysis">&#182;</a></h1>
+<h1 id="Netflix-Originals-Analysis">Netflix Originals Analysis<a class="anchor-link" href="#Netflix-Originals-Analysis">&#182;</a></h1><h4 id="Author-:-Hunter-Kempf">Author : Hunter Kempf<a class="anchor-link" href="#Author-:-Hunter-Kempf">&#182;</a></h4><p>This notebook will be organized using the <a href="https://paginas.fe.up.pt/~ec/files_0405/slides/02%20CRISP.pdf">CRISP-DM</a> process.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This analysis was inspired by this dataset: <a href="https://data.world/mattschroyer/netflix-original-series">https://data.world/mattschroyer/netflix-original-series</a></p>
+<h1 id="Business-Understanding">Business Understanding<a class="anchor-link" href="#Business-Understanding">&#182;</a></h1><p>As Netflix ramps up its original content spending many people have commented about the quality of the shows it is putting out. Even the CEO Reed Hastings back in 2018 talked about wanting to cancel more shows if they are not a “hit”. A <a href="https://www.marketwatch.com/story/if-its-ratings-dont-really-matter-why-is-netflix-suddenly-canceling-so-many-shows-2018-05-24">MarketWatch</a> article from 2018 said about Netflix’s original content :</p>
+<blockquote><p>“And yet as its volume of original content has rapidly increased, numerous shows have misfired. While Netflix has enjoyed recent success with “Stranger Things” and “13 Reasons Why,” 2017–18 has also featured a litany of failures.”</p>
+</blockquote>
+<p>Many others including Forbes writers are declaring that <a href="https://www.forbes.com/sites/greatspeculations/2019/07/19/netflixs-original-content-strategy-is-failing/#458635ec3607">Netflix’s Original Content Strategy is Failing</a></p>
+<blockquote><p>Ever since Netflix launched its first original series with House of Cards in 2013, the streaming service has put its original content front and center. Executives cherry pick impressive stats for their originals (without giving access to comprehensive viewing data), and their quarterly reports regularly feature charts showing the Instagram followers of young actors launched to fame through Netflix originals.
+Given all this emphasis on originals, it might come as a surprise that licensed content accounts for nearly 2/3 of viewing hours on Netflix. Despite spending billions of dollars on original content, Netflix still relies heavily on classic shows like The Office, Friends, and Grey’s Anatomy.</p>
+</blockquote>
+<p>With all these Negative comments about Netflix’s Original Content what does the data say about it? I will explore the following three questions:</p>
+<ol>
+<li>Just how much more Original Content is Netflix making in compared to when they first started making it in 2013? </li>
+<li>What are the rating trends for Netflix’s Original Content? What types of Content are successful? </li>
+<li>And finally can we predict if Netflix will renew or cancel a show?</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Data-Understanding">Data Understanding<a class="anchor-link" href="#Data-Understanding">&#182;</a></h1><p>The data for this analysis can be found here: <a href="https://data.world/mattschroyer/netflix-original-series">https://data.world/mattschroyer/netflix-original-series</a></p>
+<p>In this section I will do some basic EDA and try to understand a bit more about the dataset I am working with. To answer each question I will need a broad understanding of what types of questions this data can solve.</p>
 
 </div>
 </div>
@@ -13189,6 +13211,14 @@ div#notebook {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>One big drawback of this dataset is that it has a very limited ammount of observations. 109 observations means that it may be hard to really get statistically significant information</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -13332,6 +13362,14 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The first thing I notice here is that we have show level data not episode level data. We also only have one record per show with the date that it premiered. This means that we are limited on the types of analysis we can do. Any kind of show rating trend over time or episode level rating trend can't be achieved with this data. We also dont have the date that the show was cancelled if it has a status of Ended. This means we have to treat all ended data the same. Similarly we dont have a view of the dates a show that was pending was renewed on.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
@@ -13364,6 +13402,14 @@ div#notebook {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Our data ranges from the beginning of 2013 until mid 2017. Ideally the data would be a bit more recent for this analysis but it should still provide me wih around 4.5 years of data which should allow for some trend analysis</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13458,6 +13504,14 @@ Name: Premiere_Year, dtype: int64</pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Since the data doesnt include the full 2017 it is easier to show the trend by looking at a month by month over time chart</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Data-Preparation">Data Preparation<a class="anchor-link" href="#Data-Preparation">&#182;</a></h1><p>This section will include preprocessing and cleaning required to build the visuals or tables that will answer the questions we have defined for this dataset.</p>
 
 </div>
 </div>
@@ -13629,9 +13683,9 @@ Name: Premiere_Year, dtype: int64</pre>
 <div class="output_text output_subarea output_execute_result">
 <pre>Mar-17    7
 Dec-16    6
-Oct-16    6
-Apr-17    6
 Nov-16    6
+Apr-17    6
+Oct-16    6
 Name: Month_Year, dtype: int64</pre>
 </div>
 
@@ -13775,7 +13829,8 @@ Name: Month_Year, dtype: int64</pre>
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">all_months_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">CategoricalIndex</span><span class="p">(</span><span class="n">all_months_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Build dataframe for month by month column chart</span>
+<span class="n">all_months_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">CategoricalIndex</span><span class="p">(</span><span class="n">all_months_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> 
                                <span class="n">categories</span><span class="o">=</span><span class="n">month_year_categories</span><span class="p">,</span> 
                                <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">all_months_df</span> <span class="o">=</span> <span class="n">all_months_df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
@@ -13786,62 +13841,16 @@ Name: Month_Year, dtype: int64</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
-<span class="c1"># Create bars</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">all_months_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">all_months_df</span><span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
- 
-<span class="c1"># Create names on the x-axis</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">month_year_categories_display</span><span class="p">)</span>
-
-<span class="c1"># Set title</span>
-<span class="c1">#plt.title(&quot;Netflix Originals Premiers&quot;)</span>
-
-<span class="c1"># Show graphic</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Helper-Functions-for-Analysis">Helper Functions for Analysis<a class="anchor-link" href="#Helper-Functions-for-Analysis">&#182;</a></h2>
+<h3 id="Helper-Function-for-Analysis">Helper Function for Analysis<a class="anchor-link" href="#Helper-Function-for-Analysis">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">column_analysis_df</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">col_name</span><span class="p">):</span>
@@ -13871,234 +13880,15 @@ Name: Month_Year, dtype: int64</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Yearly-Analysis">Yearly Analysis<a class="anchor-link" href="#Yearly-Analysis">&#182;</a></h1><p>How are ratings, lengths and number of episodes changing over time?</p>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">yearly_df</span> <span class="o">=</span> <span class="n">column_analysis_df</span><span class="p">(</span><span class="n">nflx_originals</span><span class="p">,</span><span class="s2">&quot;Premiere_Year&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-<span class="n">yearly_df</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[17]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Count</th>
-      <th>Mean_Rating</th>
-      <th>Mean_Min_Length</th>
-      <th>Mean_Max_Length</th>
-      <th>Mean_Number_of_Episodes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2017</th>
-      <td>26</td>
-      <td>71.807692</td>
-      <td>35.307692</td>
-      <td>43.192308</td>
-      <td>10.576923</td>
-    </tr>
-    <tr>
-      <th>2016</th>
-      <td>45</td>
-      <td>73.400000</td>
-      <td>33.911111</td>
-      <td>45.266667</td>
-      <td>12.800000</td>
-    </tr>
-    <tr>
-      <th>2015</th>
-      <td>24</td>
-      <td>73.750000</td>
-      <td>31.625000</td>
-      <td>38.458333</td>
-      <td>26.166667</td>
-    </tr>
-    <tr>
-      <th>2014</th>
-      <td>7</td>
-      <td>76.000000</td>
-      <td>31.000000</td>
-      <td>35.857143</td>
-      <td>31.285714</td>
-    </tr>
-    <tr>
-      <th>2013</th>
-      <td>7</td>
-      <td>78.000000</td>
-      <td>34.000000</td>
-      <td>49.000000</td>
-      <td>35.714286</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>It looks like the IMDB Ratings are declining as more shows are produced. Also it seems that more originals are being made for the 40-60 min timeframe.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">premiers_yr</span> <span class="o">=</span> <span class="p">(</span><span class="n">yearly_df</span><span class="o">.</span><span class="n">Count</span><span class="o">/</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2013</span><span class="p">,</span><span class="mi">2014</span><span class="p">,</span><span class="mi">2015</span><span class="p">,</span><span class="mi">2016</span><span class="p">,</span><span class="mi">2017</span><span class="p">]))</span>
-<span class="n">premiers_yr</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[18]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>2017    4.333333
-2016    3.750000
-2015    2.000000
-2014    0.583333
-2013    0.583333
-dtype: float64</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This shows a clear increase in the number of Originals that are premiering per month from 2014 to 2017.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">premiers_yr</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">premiers_yr</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">premiers_yr</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">premiers_yr</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Premiers per Month&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[19]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Text(0.5, 1.0, &#39;Premiers per Month&#39;)</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>With the new average of 4.33 new shows per month I will project out the total for 2017 on a bar chart similar to the first bar chart I made</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">yearly_counts_projection</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">yearly_counts</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Premiere_Year&quot;</span><span class="p">:</span> <span class="s2">&quot;Actuals&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">premiers_yr</span> <span class="o">=</span> <span class="p">(</span><span class="n">yearly_df</span><span class="o">.</span><span class="n">Count</span><span class="o">/</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2013</span><span class="p">,</span><span class="mi">2014</span><span class="p">,</span><span class="mi">2015</span><span class="p">,</span><span class="mi">2016</span><span class="p">,</span><span class="mi">2017</span><span class="p">]))</span>
+<span class="c1"># build dataframe for yearly projection for the rest of 2017</span>
+<span class="n">yearly_counts_projection</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">yearly_counts</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Premiere_Year&quot;</span><span class="p">:</span> <span class="s2">&quot;Actuals&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 <span class="c1"># projection is just the 2017 monthly average x months left in the year (in this case it is </span>
 <span class="c1"># just the same as the first 6 months)</span>
 <span class="n">yearly_counts_projection</span><span class="p">[</span><span class="s2">&quot;Projection&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="mi">2017</span><span class="p">:</span><span class="n">premiers_yr</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2017</span><span class="p">]</span><span class="o">*</span><span class="mi">6</span><span class="p">})</span>
@@ -14116,7 +13906,7 @@ dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[20]:</div>
+    <div class="prompt output_prompt">Out[16]:</div>
 
 
 
@@ -14180,55 +13970,6 @@ dtype: float64</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;#ff7878&#39;</span><span class="p">]</span>
-<span class="n">yearly_counts_projection</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[21]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1248a6d30&gt;</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlMAAAGuCAYAAAC0pYOyAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDMuMC4zLCBodHRwOi8vbWF0cGxvdGxpYi5vcmcvnQurowAAGs1JREFUeJzt3X+w3XV95/HX2yQYUEYIBoaSanBGSqiRgFdMQSyU1kG0gqhdO8wSHZQy/YV1Z0yw41h33SpdptKp7LBMtWZbjT9g+bEd68qPAhZXIMFo0cDij1AyEQg/CwW7JPnsH/eQTTA/Lvdzk3MPeTxmMjnne77nnve9n5nw5Pv93nOqtRYAACbnRcMeAABglIkpAIAOYgoAoIOYAgDoIKYAADqIKQCADmIKAKCDmAIA6CCmAAA6zNyTL/byl7+8zZ8/f0++JADApKxateqh1trcXe23R2Nq/vz5Wbly5Z58SQCASamqeyeyn9N8AAAdxBQAQAcxBQDQYY9eM7U9zzzzTNatW5ef/exnwx7lBWP27NmZN29eZs2aNexRAOAFb+gxtW7duuy///6ZP39+qmrY44y81loefvjhrFu3LocffviwxwGAF7yhn+b72c9+loMOOkhITZGqykEHHeRIHwDsIUOPqSRCaor5eQLAnjMtYgoAYFRNv5iqmto/E3TllVemqnLXXXftdL/Pf/7zWb9+/aS/vRtvvDFve9vbJv18AGB6mX4xNSQrVqzIG9/4xnzpS1/a6X69MQUAvLCIqSRPPvlkbrnllnz2s5/dJqb+7M/+LAsXLszRRx+dZcuW5fLLL8/KlStz1llnZdGiRXn66aczf/78PPTQQ0mSlStX5qSTTkqS3HbbbTn++ONzzDHH5Pjjj8/dd9/9c6970003ZdGiRVm0aFGOOeaYPPHEE3vk+wUAps7Q3xphOrjqqqty6qmn5ogjjsicOXNyxx135IEHHshVV12VW2+9Nfvtt18eeeSRzJkzJ5/5zGdy0UUXZWxsbKdf88gjj8zNN9+cmTNn5rrrrstHPvKRXHHFFdvsc9FFF+WSSy7JCSeckCeffDKzZ8/end8mALAbiKmMn+L74Ac/mCR5z3vekxUrVmTz5s153/vel/322y9JMmfOnOf1NR9//PEsWbIk99xzT6oqzzzzzM/tc8IJJ+RDH/pQzjrrrJx55pmZN29e/zcDAOxRe31MPfzww7nhhhty5513pqqyadOmVFXe+c53TugtBmbOnJnNmzcnyTbv7fTRj340J598cq688sqsXbt2y+m/rS1btixvfetb87WvfS2LFy/OddddlyOPPHLKvjcAYPfb66+Zuvzyy3P22Wfn3nvvzdq1a3Pffffl8MMPz5w5c/K5z30uTz31VJLkkUceSZLsv//+21zbNH/+/KxatSpJtjmN9/jjj+ewww5LMn7R+vb86Ec/ysKFC7N06dKMjY3t8jcJAYDpZ/rFVGtT+2cXVqxYkXe84x3bbHvnO9+Z9evX5+1vf3vGxsayaNGiXHTRRUmS9773vTnvvPO2XID+sY99LOeff35OPPHEzJgxY8vX+PCHP5wLLrggJ5xwQjZt2rTd17744ovzmte8JkcffXT23XffvOUtb+n4wQEAw1BtAsExVcbGxtrKlSu32bZmzZosWLBgj82wt/BzBdgLXXDBsCfYvT75yT36clW1qrW28984y3Q8MgUAMELEFABABzEFANBBTAEAdBBTAAAdxBQAQIfp9w7oU/1rnRP4NcoZM2Zk4cKF2bhxYxYsWJDly5dv+RiZiTjttNPyxS9+MQcccMDzGu3GG2/MPvvsk+OPPz5Jcumll2a//fbL2Wef/by+DgAwPI5MJdl3332zevXq3Hnnndlnn31y6aWXbvN4a23LR8Zsz9e+9rXnHVLJeEx961vf2nL/vPPOE1IAMGLE1HOceOKJ+eEPf5i1a9dmwYIF+d3f/d0ce+yxue+++7JixYosXLgwr3nNa7J06dItz5k/f34eeuihJMnf/u3f5rjjjsuiRYvyO7/zO1ve/fzrX/96jj322Bx99NE55ZRTsnbt2lx66aX59Kc/nUWLFuWb3/xm/uRP/mTLO62vXr06ixcvzmtf+9q84x3vyKOPPpokOemkk7J06dIcd9xxOeKII/LNb35zD/+EAICtiamtbNy4MX//93+fhQsXJknuvvvunH322fnOd76TWbNmZenSpbnhhhuyevXq3H777bnqqqu2ef6aNWvy5S9/ObfccktWr16dGTNm5Atf+EI2bNiQD3zgA7niiivy3e9+N1/96lczf/78nHfeefmjP/qjrF69OieeeOI2X+vss8/OhRdemO9973tZuHBhPv7xj28z52233ZaLL754m+0AwJ43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
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14239,7 +13980,7 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.plotting</span> <span class="k">import</span> <span class="n">register_matplotlib_converters</span>
@@ -14297,7 +14038,7 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">nflx_originals</span><span class="p">[</span><span class="n">nflx_originals</span><span class="p">[</span><span class="s2">&quot;IMDB_Rating&quot;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
@@ -14313,7 +14054,7 @@ dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[23]:</div>
+    <div class="prompt output_prompt">Out[18]:</div>
 
 
 
@@ -14421,7 +14162,7 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">nflx_originals</span> <span class="o">=</span> <span class="n">nflx_originals</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
@@ -14442,7 +14183,7 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># save the old ratings for comparison</span>
@@ -14456,7 +14197,7 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">yearly_df</span> <span class="o">=</span> <span class="n">column_analysis_df</span><span class="p">(</span><span class="n">nflx_originals</span><span class="p">,</span><span class="s2">&quot;Premiere_Year&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
@@ -14473,7 +14214,7 @@ dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[26]:</div>
+    <div class="prompt output_prompt">Out[21]:</div>
 
 
 
@@ -14557,7 +14298,7 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">difference</span> <span class="o">=</span> <span class="n">yearly_df</span><span class="o">.</span><span class="n">Mean_Rating</span> <span class="o">-</span> <span class="n">old_rating</span>
@@ -14574,7 +14315,7 @@ dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[27]:</div>
+    <div class="prompt output_prompt">Out[22]:</div>
 
 
 
@@ -14596,7 +14337,473 @@ Name: Mean_Rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="1.-Just-how-much-more-Original-Content-is-Netflix-making-in-compared-to-when-they-first-started-making-it-in-2013?">1. Just how much more Original Content is Netflix making in compared to when they first started making it in 2013?<a class="anchor-link" href="#1.-Just-how-much-more-Original-Content-is-Netflix-making-in-compared-to-when-they-first-started-making-it-in-2013?">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Yearly-Analysis">Yearly Analysis<a class="anchor-link" href="#Yearly-Analysis">&#182;</a></h1><p>How are ratings, lengths and number of episodes changing over time?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">yearly_df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[23]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Count</th>
+      <th>Mean_Rating</th>
+      <th>Mean_Min_Length</th>
+      <th>Mean_Max_Length</th>
+      <th>Mean_Number_of_Episodes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2017</th>
+      <td>26</td>
+      <td>74.680000</td>
+      <td>35.307692</td>
+      <td>43.192308</td>
+      <td>10.576923</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>45</td>
+      <td>75.068182</td>
+      <td>33.911111</td>
+      <td>45.266667</td>
+      <td>12.800000</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>24</td>
+      <td>76.956522</td>
+      <td>31.625000</td>
+      <td>38.458333</td>
+      <td>26.166667</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>7</td>
+      <td>76.000000</td>
+      <td>31.000000</td>
+      <td>35.857143</td>
+      <td>31.285714</td>
+    </tr>
+    <tr>
+      <th>2013</th>
+      <td>7</td>
+      <td>78.000000</td>
+      <td>34.000000</td>
+      <td>49.000000</td>
+      <td>35.714286</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It looks like the IMDB Ratings are declining as more shows are produced. Also it seems that more originals are being made for the 40-60 min timeframe.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">premiers_yr</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[24]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2017    4.333333
+2016    3.750000
+2015    2.000000
+2014    0.583333
+2013    0.583333
+dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This shows a clear increase in the number of Originals that are premiering per month from 2014 to 2017.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">premiers_yr</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">premiers_yr</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">premiers_yr</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">premiers_yr</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Premiers per Month&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[25]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0.5, 1.0, &#39;Premiers per Month&#39;)</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>With the new average of 4.33 new shows per month I will project out the total for 2017 on a bar chart similar to the first bar chart I made</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;#ff7878&#39;</span><span class="p">]</span>
+<span class="n">yearly_counts_projection</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[26]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x122851c18&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlMAAAGuCAYAAAC0pYOyAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDMuMC4zLCBodHRwOi8vbWF0cGxvdGxpYi5vcmcvnQurowAAGs1JREFUeJzt3X+w3XV95/HX2yQYUEYIBoaSanBGSqiRgFdMQSyU1kG0gqhdO8wSHZQy/YV1Z0yw41h33SpdptKp7LBMtWZbjT9g+bEd68qPAhZXIMFo0cDij1AyEQg/CwW7JPnsH/eQTTA/Lvdzk3MPeTxmMjnne77nnve9n5nw5Pv93nOqtRYAACbnRcMeAABglIkpAIAOYgoAoIOYAgDoIKYAADqIKQCADmIKAKCDmAIA6CCmAAA6zNyTL/byl7+8zZ8/f0++JADApKxateqh1trcXe23R2Nq/vz5Wbly5Z58SQCASamqeyeyn9N8AAAdxBQAQAcxBQDQYY9eM7U9zzzzTNatW5ef/exnwx7lBWP27NmZN29eZs2aNexRAOAFb+gxtW7duuy///6ZP39+qmrY44y81loefvjhrFu3LocffviwxwGAF7yhn+b72c9+loMOOkhITZGqykEHHeRIHwDsIUOPqSRCaor5eQLAnjMtYgoAYFRNv5iqmto/E3TllVemqnLXXXftdL/Pf/7zWb9+/aS/vRtvvDFve9vbJv18AGB6mX4xNSQrVqzIG9/4xnzpS1/a6X69MQUAvLCIqSRPPvlkbrnllnz2s5/dJqb+7M/+LAsXLszRRx+dZcuW5fLLL8/KlStz1llnZdGiRXn66aczf/78PPTQQ0mSlStX5qSTTkqS3HbbbTn++ONzzDHH5Pjjj8/dd9/9c6970003ZdGiRVm0aFGOOeaYPPHEE3vk+wUAps7Q3xphOrjqqqty6qmn5ogjjsicOXNyxx135IEHHshVV12VW2+9Nfvtt18eeeSRzJkzJ5/5zGdy0UUXZWxsbKdf88gjj8zNN9+cmTNn5rrrrstHPvKRXHHFFdvsc9FFF+WSSy7JCSeckCeffDKzZ8/end8mALAbiKmMn+L74Ac/mCR5z3vekxUrVmTz5s153/vel/322y9JMmfOnOf1NR9//PEsWbIk99xzT6oqzzzzzM/tc8IJJ+RDH/pQzjrrrJx55pmZN29e/zcDAOxRe31MPfzww7nhhhty5513pqqyadOmVFXe+c53TugtBmbOnJnNmzcnyTbv7fTRj340J598cq688sqsXbt2y+m/rS1btixvfetb87WvfS2LFy/OddddlyOPPHLKvjcAYPfb66+Zuvzyy3P22Wfn3nvvzdq1a3Pffffl8MMPz5w5c/K5z30uTz31VJLkkUceSZLsv//+21zbNH/+/KxatSpJtjmN9/jjj+ewww5LMn7R+vb86Ec/ysKFC7N06dKMjY3t8jcJAYDpZ/rFVGtT+2cXVqxYkXe84x3bbHvnO9+Z9evX5+1vf3vGxsayaNGiXHTRRUmS9773vTnvvPO2XID+sY99LOeff35OPPHEzJgxY8vX+PCHP5wLLrggJ5xwQjZt2rTd17744ovzmte8JkcffXT23XffvOUtb+n4wQEAw1BtAsExVcbGxtrKlSu32bZmzZosWLBgj82wt/BzBdgLXXDBsCfYvT75yT36clW1qrW28984y3Q8MgUAMELEFABABzEFANBBTAEAdBBTAAAdxBQAQIfp9w7oU/1rnRP4NcoZM2Zk4cKF2bhxYxYsWJDly5dv+RiZiTjttNPyxS9+MQcccMDzGu3GG2/MPvvsk+OPPz5Jcumll2a//fbL2Wef/by+DgAwPI5MJdl3332zevXq3Hnnndlnn31y6aWXbvN4a23LR8Zsz9e+9rXnHVLJeEx961vf2nL/vPPOE1IAMGLE1HOceOKJ+eEPf5i1a9dmwYIF+d3f/d0ce+yxue+++7JixYosXLgwr3nNa7J06dItz5k/f34eeuihJMnf/u3f5rjjjsuiRYvyO7/zO1ve/fzrX/96jj322Bx99NE55ZRTsnbt2lx66aX59Kc/nUWLFuWb3/xm/uRP/mTLO62vXr06ixcvzmtf+9q84x3vyKOPPpokOemkk7J06dIcd9xxOeKII/LNb35zD/+EAICtiamtbNy4MX//93+fhQsXJknuvvvunH322fnOd76TWbNmZenSpbnhhhuyevXq3H777bnqqqu2ef6aNWvy5S9/ObfccktWr16dGTNm5Atf+EI2bNiQD3zgA7niiivy3e9+N1/96lczf/78nHfeefmjP/qjrF69OieeeOI2X+vss8/OhRdemO9973tZuHBhPv7xj28z52233ZaLL754m+0AwJ43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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="c1"># Create bars</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">all_months_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">all_months_df</span><span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+ 
+<span class="c1"># Create names on the x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">month_year_categories_display</span><span class="p">)</span>
+
+<span class="c1"># Set title</span>
+<span class="c1">#plt.title(&quot;Netflix Originals Premiers&quot;)</span>
+
+<span class="c1"># Show graphic</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAk0AAAGfCAYAAABC5ObhAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDMuMC4zLCBodHRwOi8vbWF0cGxvdGxpYi5vcmcvnQurowAAEmFJREFUeJzt3X+M7Xld3/HXu3vZ8NMfcUdrhNsLBknwB6DDRkM1BX8UaAPBn5DaVCXe1kSiRmM02qSNSWNs/ZXUaC90XZPSRUTWGKL8iEopiQXvrrvIsku0uJQFyl5iFFYFyvLuH3MWx8vsnffde74z3zv7eCSTvTPnm+/3ffYz597nfL/nnKnuDgAAl/YPjnsAAICrgWgCABgQTQAAA6IJAGBANAEADIgmAIAB0QQAMCCaAAAGRBMAwMCpJXZ63XXX9ZkzZ5bYNQDAVt1yyy0f7u6dw7ZbJJrOnDmT8+fPL7FrAICtqqr3TrZzeQ4AYEA0AQAMiCYAgAHRBAAwIJoAAAZEEwDAgGgCABgQTQAAA6IJAGBANAEADIgmAIAB0QQAMCCaAAAGDo2mqnpKVd227+MjVfWDRzEcAMBanDpsg+5+d5KnJ0lVXZPk/UluXnguAIBVudzLc1+f5H9393uXGAYAYK0uN5penOSmg26oqrNVdb6qzl+4cOHKJwMA1qfq0h8n2DiaquraJC9I8hsH3d7d57p7t7t3d3Z2tjUfAMAqXM6ZpuclubW7P7TUMAAAa3U50fSSPMilOQCAk24UTVX16CTfmOS1y44DALBOh77lQJJ0998k+byFZwEAWC3vCA4AMCCaAAAGRBMAwIBoAgAYEE0AAAOiCQBgQDQBAAyIJgCAAdEEADAgmgAABkQTAMCAaAIAGBBNAAADogkAYEA0AQAMiCYAgAHRBAAwIJoAAAZEEwDAgGgCABgQTQAAA6IJAGBANAEADIgmAIAB0QQAMCCaAAAGRBMAwIBoAgAYEE0AAAOiCQBgQDQBAAyIJgCAAdEEADAgmgAABkQTAMCAaAIAGBBNAAADogkAYEA0AQAMiCYAgAHRBAAwIJoAAAZEEwDAwCiaqupzquo1VXVXVd1ZVV+z9GAAAGtyarjdLyZ5fXd/a1Vdm+TRC84EALA6h0ZTVX1Wkq9L8l1J0t2fSPKJZccCAFiXyeW5JyW5kORXq+qPq+oVVfWYizeqqrNVdb6qzl+4cGHrgwLAVa/q0h+T7S53X8dlzbM9RJNoOpXkK5P8cnc/I8lfJ/mxizfq7nPdvdvduzs7O1seEwDgeE2i6Z4k93T32zafvyZ7EQUA8LBxaDR19/9N8r6qesrmS1+f5F2LTgUAsDLTV8+9LMkrN6+ce0+S715uJACA9RlFU3fflmR34VkAAFbLO4IDAAyIJgCAAdEEADAgmgAABkQTAMCAaAIAGBBNAAADogkAYEA0AQAMiCYAgAHRBAAwIJoAAAZEEwDAgGgCABgQTQAAA6IJAGBANAEADIgmAIAB0QQAMCCaAAAGRBMAwIBoAgAYEE0AAAOiCQBgQDQBAAyIJgCAAdEEADAgmgAABkQTAMCAaAIAGBBNAAADogkAYEA0AQAMiCYAgAHRBAAwIJoAAAZEEwDAgGgCABgQTQAAA6IJAGBANAEADIgmAICBU5ONquruJB9Ncn+ST3b37pJDAQCszSiaNp7d3R9ebBIAgBVzeQ4AYGAaTZ3kjVV1S1WdXXIgAIA1ml6ee1Z3f6CqPj/Jm6rqru5+y/4NNjF1NklOnz695TEBgEVVXfr27qOZY8VGZ5q6+wOb/96b5OYk1x+wzbnu3u3u3Z2dne1OCQBwzA6Npqp6TFU97oE/J/mmJO9cejAAgDWZXJ77giQ3195pu1NJ/nt3v37RqQAAVubQaOru9yR52hHMAgCwWt5yAABgQDQBAAyIJgCAAdEEADAgmgAABkQTAMCAaAIAGBBNAAADogkAYEA0AQAMiCYAgAHRBAAwIJoAAAZEEwDAgGgCABgQTQAAA6IJAGBANAEADIgmAIAB0QQAMCCaAAAGRBMAwIBoAgAYEE0AAAOiCQBgQDQBAAyIJgCAAdEEADAgmgAABkQTAMCAaAIAGBBNAAADogkAYEA0AQAMiCYAgAHRBAAwIJoAAAZEEwDAgGgCABgQTQAAA6IJAGBANAEADIgmAICBcTRV1TVV9cdV9bolBwIAWKPLOdP0A0nuXGoQAIA1G0VTVT0+yT9L8oplxwEAWKfpmaZfSPKjST614CwAAKt1aDRV1T9Pcm9333LIdmer6nxVnb9w4cLWBgS4alRd+uOkHNNsy+9vm8y2NZMzTc9K8oKqujvJq5I8p6r+28Ubdfe57t7t7t2dnZ0tjwkAcLwOjabu/vHufnx3n0ny4iS/393fufhkAAAr4n2aAAAGTl3Oxt395iRvXmQSAIAVc6YJAGBANAEADIgmAIAB0QQAMCCaAAAGRBMAwIBoAgAYEE0AAAOiCQBgQDQBAAyIJgCAAdEEADAgmgAABkQTAMCAaAIAGBBNAAADogkAYEA0AQAMiCYAgAHRBAAwIJoAAAZEEwDAgGgCABgQTQAAA6IJAGBANAEADIgmAIAB0QQAMCCaAAAGRBMAwIBoAgAYEE0AAAOiCQBgQDQBAAyIJgCAAdEEADAgmgAABkQTAMCAaAIAGBBNAAADogkAYEA0AQAMiCYAgIFDo6mqHllVb6+q26vqjqr690cxGADAmpwabPPxJM/p7vuq6hFJ3lpVv9vd/2vh2QAAVuPQaOruTnLf5tNHbD56yaEAANZm9Jymqrqmqm5Lcm+SN3X32w7Y5mxVna+q8xcuXNj2nABciapLfxzXvpY47jZnO677yiqNoqm77+/upyd5fJLrq+rLDtjmXHfvdvfuzs7OtucEADhWl/Xque7+yyRvTvLcRaYBAFipyavndqrqczZ/flSSb0hy19KDAQCsyeTVc1+Y5Neq6prsRdaru/t1y44FALAuk1fPvSPJM45gFgCA1fKO4AAAA6IJAGBANAEADIgmAIAB0QQAMCCaAAAGRBMAwIBoAgAYEE0AAAOiCQBgQDQBAAyIJgCAAdEEADAgmgAABkQTAMCAaAIAGBBNAAADogkAYEA0AQAMiCYAgAHRBAAwIJoAAAZEEwDAgGgCABgQTQAAA6IJAGBANAEADIgmAIAB0QQAMCCaAAAGRBMAwIBoAgAYEE0AAAOiCQBgQDQBAAyIJgCAAdEEADAgmgAABkQTAMCAaAIAGBBNAAADogkAYEA0AQAMHBpNVfWEqvqDqrqzqu6oqh84isEAANbk1GCbTyb54e6+taoel+SWqnpTd79r4dkAAFbj0DNN3f3B7r518+ePJrkzyRctPRgAwJpMzjR9WlWdSfKMJG874LazSc4myenTp7cwGleFqkvf3n00c1xt1vz/7bhmmx73Uttd7mzWYR0eTveVq9r4ieBV9dgkv5nkB7v7Ixff3t3nunu3u3d3dna2OSMAwLEbRVNVPSJ7wfTK7n7tsiMBAKzP5NVzleS/Jrmzu39u+ZEAANZncqbpWUn+ZZLnVNVtm4/nLzwXAMCqHPpE8O5+a5JDnqUHAHCyeUdwAIAB0QQAMCCaAAAGRBMAwIBoAgAYEE0AAAOiCQBgQDQBAAyIJgCAAdEEADAgmgAABkQTAMCAaAIAGBBNAAADogkAYEA0AQAMiCYAgAHRBAAwIJoAAAZEEwDAgGgCABgQTQAAA6IJAGBANAEADIgmAIAB0QQAMCCaAAAGRBMAwIBoAgAYEE0AAAOiCQBgQDQBAAyIJgCAAdEEADAgmgAABkQTAMCAaAIAGBBNAAADogkAYEA0AQAMiCYAgAHRBAAwcGg0VdUNVXVvVb3zKAYCAFijyZmmG5M8d+E5AABW7dBo6u63JPmLI5gFAGC1PKcJAGDg1LZ2VFVnk5xNktOnT29rt5c64KVv797e/h7Y11Ee86Hsb63H3LaTcB+mjuP7fBv72r+/k/B9vuZ12LaH0+MLLtPWzjR197nu3u3u3Z2dnW3tFgBgFVyeAwAYmLzlwE1J/jDJU6rqnqp66fJjAQCsy6HPaerulxzFIAAAa+byHADAgGgCABgQTQAAA6IJAGBANAEADIgmAIAB0QQAMCCaAAAGRBMAwIBoAgAYEE0AAAOiCQBgQDQBAAyIJgCAAdEEADAgmgAABkQTAMCAaAIAGBBNAAADogkAYEA0AQAMiCYAgAHRBAAwIJoAAAZEEwDAgGgCABgQTQAAA6IJAGBANAEADIgmAIAB0QQAMCCaAAAGRBMAwIBoAgAYEE0AAAOiCQBgQDQBAAyIJgCAAdEEADAgmgAABkQTAMCAaAIAGBBNAAADo2iqqudW1bur6s+q6seWHgoAYG0OjaaquibJLyV5XpKnJnlJVT116cEAANZkcqbp+iR/1t3v6e5PJHlVkhcuOxYAwLpMoumLkrxv3+f3bL4GAPCwcWqwTR3wtf6MjarOJjm7+fS+qnr3lQz2EFyX5MP7Btrenqf72uYxl9jfcRzzwff399fraI559TiO77krP+ZDewxuc7vjOOa2t1vfbJe/ruu7D8d7zG1v57GaJF+V5JbZTkb+0WSjSTTdk+QJ+z5/fJIPXLxRd59Lcm402gKq6nx37x7X8bk81uvksaYnk3U9eU7CmlZVH8d9mFye+6MkT66qJ1bVtUlenOS3lx0LAGBdDj3T1N2frKrvT/KGJNckuaG771h8MgCAFZlcnkt3/06S31l4lit1bJcGeUis18ljTU8m63rynIQ1/YznVh+F6j6W4wIAXFX8GhUAgIHVRFNV3V9Vt+37OHOJbf9JVb1usM/Pq6o/qKr7quo/X3Tb66vq9qq6o6p+ZfPO51yGqrpvS/u5oarurap3PsjtP1JVXVXXbeN4XNrS61pV/66q3r/vsf78bRyPB3cUj9Wqetnm123dUVU/s43jcWlH8Fj99X2P07ur6rZtHO9qtppoSvK33f30fR93b2GfH0vyb5P8yAG3fXt3Py3JlyXZSfJtWzgeD82NSZ570A1V9YQk35jk/xzlQGzFjXmQdU3y8/se62t/viR/58YcsKZV9ezs/aaIr+juL03yn454Lq7MjTlgXbv7Ox54nCb5zSSvPerB1mZN0fQZquqaqvqPVfVHVfWOqvrX+27+rKq6uaretTlT9Bn3pbv/urvfmr14uvi2j2z+eCrJtTmmJ5Vd7arqsVX1e1V1a1X9SVW9cPP1M1V1Z1W9fPOT5xur6lEH7aO735LkLx7kED+f5EdjfY7UEawrR2zhNf2+JD/d3R/fbHfvYneEv+coHqtVVUm+PclNi9yJq8iaoulR+04D3rz52kuT/FV3PzPJM5N8b1U9cXPb9Ul+OMmXJ/niJN98uQesqjckuTfJR5O85krvwMPUx5K8qLu/Msmzk/zs5gGWJE9O8kubnzz/Msm3XM6Oq+oFSd7f3bdvc2BGFlvXje/f/CB0Q1V97nZG5hBLrumXJPnaqnpbVf2Pqnrm1qbmMEs/VpPka5N8qLv/9IqnvcqN3nLgiPzt5hTgft+U5Cuq6ls3n3929r4JPpHk7d39niSpqpuS/ONcZvh09z+tqkcmeWWS5yR50xXM/3BVSf5DVX1dkk9l7/cSfsHmtj/v7geugd+S5Mx4p1WPTvIT2fse4Ogtsq4bv5zkp7J39vCnkvxsku+50oE51JJreirJ5yb56uz9gPvqqnpSe3n2UVhyXR/wkjjLlGRdZ5oOUkletu+5D0/s7jdubrv4wdhV9aJ9Z6tGb6/e3R/L3jucv3CLcz+c/IvsPSfsqzbR+6Ekj9zc9vF9292f5FRVPWHfGv2bS+z3i5M8McntVXV39n59z61V9Q+3fg84yFLrmu7+UHff392fSvLy7J01ZnmLrWn2ft3Wa3vP27P3j7cXbhyNJdc1VXUqe1dyfn3Lc1+V1nSm6SBvSPJ9VfX73f3/qupLkrx/c9v1m0t1703yHUnOdffNSW5+kH19WlU9NsnjuvuDm2+I5yf5n8vchRPvs5Pcu1mfZ+eQX3rY3e9LcvEZxYO2+5Mkn//A55tw2u3uZX7JLxdbZF2TpKq+sLs/uPn0RUkOfNUkW7fYmib5reydrX/z5u/pa7PUL+TmYkuua5J8Q5K7uvueK5jxxFj7maZXJHlX9s4wvDPJf8nfhd4fJvnp7P2F++d5kFja/GP7c0m+q6ruqaqnJnlMkt+uqnckuT17z2v6lQXvx4mzic2PZ+/S5m5Vnc/eTzx3PYR93ZS99XzKZo1eutVhGTuidf2ZzRNW35G952D80Ham5yBHtKY3JHnS5u/pVyX5Vy7NLesI/w5+cVya+zTvCM5DUlVPS/Ly7nZp5QSxriePNT2ZrOvxWPuZJlZocx38piQ/edyzsD3W9eSxpieTdT0+zjQBAAw40wQAMCCaAAAGRBMAwIBoAgAYEE0AAAOiCQBg4P8DWQb/efo03lYAAAAASUVORK5CYII=
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Question-1-Results">Question 1 Results<a class="anchor-link" href="#Question-1-Results">&#182;</a></h2><p>Netflix is making significantly more content in 2017 from when it first started making original content in 2013. From the monthly rates in 2013 to the monthly premier rates in 2017 there was a ~750% increase in the rate at which netflix has been premiering new original content</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="2.-What-are-the-rating-trends-for-Netflix&#8217;s-Original-Content?-What-types-of-Content-are-successful?">2. What are the rating trends for Netflix&#8217;s Original Content? What types of Content are successful?<a class="anchor-link" href="#2.-What-are-the-rating-trends-for-Netflix&#8217;s-Original-Content?-What-types-of-Content-are-successful?">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First We will look at the show metrics by the year they premiered in</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">yearly_df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[28]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Count</th>
+      <th>Mean_Rating</th>
+      <th>Mean_Min_Length</th>
+      <th>Mean_Max_Length</th>
+      <th>Mean_Number_of_Episodes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2017</th>
+      <td>26</td>
+      <td>74.680000</td>
+      <td>35.307692</td>
+      <td>43.192308</td>
+      <td>10.576923</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>45</td>
+      <td>75.068182</td>
+      <td>33.911111</td>
+      <td>45.266667</td>
+      <td>12.800000</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>24</td>
+      <td>76.956522</td>
+      <td>31.625000</td>
+      <td>38.458333</td>
+      <td>26.166667</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>7</td>
+      <td>76.000000</td>
+      <td>31.000000</td>
+      <td>35.857143</td>
+      <td>31.285714</td>
+    </tr>
+    <tr>
+      <th>2013</th>
+      <td>7</td>
+      <td>78.000000</td>
+      <td>34.000000</td>
+      <td>49.000000</td>
+      <td>35.714286</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next lets see the IMDB ratings over time for individual shows</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ended_mask</span> <span class="o">=</span> <span class="n">nflx_originals</span><span class="p">[</span><span class="s1">&#39;Status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Ended&quot;</span>
@@ -14654,7 +14861,7 @@ Name: Mean_Rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sorted_dates</span> <span class="o">=</span> <span class="n">nflx_originals</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Premiere Date&#39;</span><span class="p">)[</span><span class="s1">&#39;Premiere Date&#39;</span><span class="p">]</span>
@@ -14668,7 +14875,7 @@ Name: Mean_Rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
@@ -14721,7 +14928,7 @@ Name: Mean_Rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ratings_cut_df</span> <span class="o">=</span> <span class="n">nflx_originals</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -14740,7 +14947,7 @@ Name: Mean_Rating, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[31]:</div>
+    <div class="prompt output_prompt">Out[32]:</div>
 
 
 
@@ -14847,7 +15054,7 @@ Name: Mean_Rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">column_analysis_df</span><span class="p">(</span><span class="n">nflx_originals</span><span class="p">,</span><span class="s2">&quot;Major_Genre&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;Mean_Rating&quot;</span><span class="p">,</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
@@ -14863,7 +15070,7 @@ Name: Mean_Rating, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[32]:</div>
+    <div class="prompt output_prompt">Out[33]:</div>
 
 
 
@@ -15003,7 +15210,7 @@ Name: Mean_Rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">column_analysis_df</span><span class="p">(</span><span class="n">nflx_originals</span><span class="p">,</span><span class="s2">&quot;Status&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;Mean_Rating&quot;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
@@ -15019,7 +15226,7 @@ Name: Mean_Rating, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[33]:</div>
+    <div class="prompt output_prompt">Out[34]:</div>
 
 
 
@@ -15096,15 +15303,24 @@ Name: Mean_Rating, dtype: float64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Status-Predictions">Status Predictions<a class="anchor-link" href="#Status-Predictions">&#182;</a></h1><p>We dont have that many observations here but it would be interesting to try to predict if a show that is in the Pending status will be Renewed or Ended. This analysis is pretty simplistic because it will not take into account the reason a show was cancelled (sometimes good shows have a natural or planned number of episodes or seasons) and given the relatively short time horizon there will be plenty of shows that will be cancelled in the future for quality or user engagement reasons that still havent been ended yet due to the fact that they recently premiered.</p>
+<h2 id="Question-2-Results">Question 2 Results<a class="anchor-link" href="#Question-2-Results">&#182;</a></h2><p>As a whole the mean rating for Original Content shows that Netflix has been producing has been falling. Having said this the drop in IMDB Rating is because Netflix is producing more low quality content but not because Netflix is producing less high rated content. This means that users may have to sift through some more poor quality content but in general there is more high quality content available for them to watch.</p>
+<p>As far as the types of content that have high ratings Netflix is most proficient at making Drama, Marvel, Foreign Language and Docu-Series. These genres have produced the best ratings of netflix shows. Interestingly all of these categories except foreign language seem to have average runtimes between 45 min and 70 min.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="3.-Can-we-predict-if-Netflix-will-renew-or-cancel-a-show?">3. Can we predict if Netflix will renew or cancel a show?<a class="anchor-link" href="#3.-Can-we-predict-if-Netflix-will-renew-or-cancel-a-show?">&#182;</a></h1><p>We dont have that many observations here but it would be interesting to try to predict if a show that is in the Pending status will be Renewed or Ended. This analysis is pretty simplistic because it will not take into account the reason a show was cancelled (sometimes good shows have a natural or planned number of episodes or seasons) and given the relatively short time horizon there will be plenty of shows that will be cancelled in the future for quality or user engagement reasons that still havent been ended yet due to the fact that they recently premiered.</p>
 <p>Given all of these drawbacks I would not expect this model to perform that well in making predictions but I still think that it can provide some insights into important features to predict if a show will be renewed or ended!</p>
-<h3 id="Feature-Creation">Feature Creation<a class="anchor-link" href="#Feature-Creation">&#182;</a></h3>
+<h3 id="Data-Preparation-:-Model-Feature-Creation">Data Preparation : Model Feature Creation<a class="anchor-link" href="#Data-Preparation-:-Model-Feature-Creation">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">other_shows</span> <span class="o">=</span> <span class="n">nflx_originals</span><span class="p">[</span><span class="n">nflx_originals</span><span class="p">[</span><span class="s2">&quot;Status&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;Ongoing&quot;</span><span class="p">]</span>
@@ -15133,8 +15349,8 @@ Foreign Language       8
 Marvel                 4
 Family Live Action     3
 Reality                2
-Animation              1
 Talk Show              1
+Animation              1
 Name: Major_Genre, dtype: int64
 </pre>
 </div>
@@ -15154,7 +15370,7 @@ Name: Major_Genre, dtype: int64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">nflx_originals</span><span class="p">[</span><span class="s2">&quot;Subgenre&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -15170,7 +15386,7 @@ Name: Major_Genre, dtype: int64
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[35]:</div>
+    <div class="prompt output_prompt">Out[36]:</div>
 
 
 
@@ -15178,46 +15394,46 @@ Name: Major_Genre, dtype: int64
 <div class="output_text output_subarea output_execute_result">
 <pre>Animation                           33
 Comedy                               8
-Documentary                          5
 Sitcom                               5
-Comedy-drama                         4
+Documentary                          5
 Crime drama                          4
-Historical drama                     3
+Comedy-drama                         4
 Culinary art                         3
-Political drama                      3
 Drama                                3
-Sketch comedy                        2
+Historical drama                     3
+Political drama                      3
 Talk Show                            2
-Sport                                2
-Science fiction                      2
 Period drama                         2
+Sketch comedy                        2
+Sport                                2
 Mockumentary                         2
+Science fiction                      2
+Comic science fiction                1
 Romantic comedy                      1
-Comedy/educational                   1
-Celebrity                            1
-Science investigation                1
-Neo-noir/psychological thriller      1
-Docu-Series                          1
-Romantic comedy anthology series     1
-Educational                          1
-Adult Animation                      1
-Black-comedy mystery                 1
-Thriller                             1
-Mystery                              1
 Competition                          1
-Crime drama/legal drama              1
-Neo-blaxploitation                   1
-Comedy-horror                        1
-Horror/thriller                      1
 Satirical comedy                     1
-Family drama                         1
-Musical drama                        1
+Adult Animation                      1
+Comedy-horror                        1
 Satire/Drama                         1
 Science fictionanthology series      1
-Comic science fiction                1
-Martial arts/mystery fiction         1
-Teen drama/mystery                   1
+Black-comedy mystery                 1
+Musical drama                        1
+Celebrity                            1
 Science fiction/horror               1
+Educational                          1
+Family drama                         1
+Thriller                             1
+Docu-Series                          1
+Neo-blaxploitation                   1
+Comedy/educational                   1
+Martial arts/mystery fiction         1
+Science investigation                1
+Romantic comedy anthology series     1
+Horror/thriller                      1
+Neo-noir/psychological thriller      1
+Teen drama/mystery                   1
+Crime drama/legal drama              1
+Mystery                              1
 Name: Subgenre, dtype: int64</pre>
 </div>
 
@@ -15237,7 +15453,7 @@ Name: Subgenre, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">OneHotEncoder</span>
@@ -15304,7 +15520,7 @@ Name: Subgenre, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Gather Known outcomes for shows (either renewed or ended)</span>
@@ -15325,7 +15541,7 @@ Name: Subgenre, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[37]:</div>
+    <div class="prompt output_prompt">Out[38]:</div>
 
 
 
@@ -15463,7 +15679,7 @@ Name: Subgenre, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Make target column -&gt; 1 if &quot;Renewed&quot; and -&gt; 0 if &quot;Ended&quot;</span>
@@ -15481,7 +15697,7 @@ Name: Subgenre, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[38]:</div>
+    <div class="prompt output_prompt">Out[39]:</div>
 
 
 
@@ -15503,7 +15719,7 @@ Name: Status, dtype: bool</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">nflx_originals_features</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Status&quot;</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
@@ -15516,7 +15732,7 @@ Name: Status, dtype: bool</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -15532,7 +15748,7 @@ Name: Status, dtype: bool</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[40]:</div>
+    <div class="prompt output_prompt">Out[41]:</div>
 
 
 
@@ -15665,6 +15881,13 @@ Name: Status, dtype: bool</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Modeling">Modeling<a class="anchor-link" href="#Modeling">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Split Data into training and test sets for analysis making sure to stratify on the target variable to keep the target percentages consistent</p>
 
 </div>
@@ -15672,7 +15895,7 @@ Name: Status, dtype: bool</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
@@ -15686,7 +15909,7 @@ Name: Status, dtype: bool</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
@@ -15749,7 +15972,7 @@ weighted avg       0.72      0.67      0.68        12
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Feature_Weights</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">lr_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span> <span class="p">:</span> <span class="s2">&quot;Values&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;Values&quot;</span><span class="p">)</span>
@@ -15766,7 +15989,7 @@ weighted avg       0.72      0.67      0.68        12
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[43]:</div>
+    <div class="prompt output_prompt">Out[44]:</div>
 
 
 
@@ -15858,14 +16081,15 @@ weighted avg       0.72      0.67      0.68        12
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Unkown outcomes that we would like to predict for </span>
 <span class="n">pending_shows_features</span> <span class="o">=</span> <span class="n">nflx_originals</span><span class="p">[</span><span class="n">nflx_originals</span><span class="p">[</span><span class="s2">&quot;Status&quot;</span><span class="p">]</span><span class="o">==</span> <span class="s2">&quot;Pending&quot;</span><span class="p">]</span>
 <span class="n">pending_features_clean</span> <span class="o">=</span> <span class="n">clean_and_select_features</span><span class="p">(</span><span class="n">pending_shows_features</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Status&quot;</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">pending_shows_features_scaled</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pending_features_clean</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pending Shows that will be renewed:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">lr_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pending_features_clean</span><span class="p">))</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">lr_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pending_shows_features_scaled</span><span class="p">))</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
 </pre></div>
 
     </div>
@@ -15883,7 +16107,8 @@ weighted avg       0.72      0.67      0.68        12
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Pending Shows that will be renewed:
-True    44
+True     25
+False    19
 dtype: int64
 </pre>
 </div>
@@ -15896,12 +16121,31 @@ dtype: int64
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h1><h2 id="Monthly-Analysis">Monthly Analysis<a class="anchor-link" href="#Monthly-Analysis">&#182;</a></h2><p>Netflix is stepping up their original content production and from 2013 to mid 2017 has gone from one show premier every other month</p>
+<h2 id="Question-3-Results">Question 3 Results<a class="anchor-link" href="#Question-3-Results">&#182;</a></h2><p>Yes we can sucessfully model our data! For how few observations and features we have and for the simple linear regression model I chose the f1 score results in the .67 range is actually pretty impressive. Furthermore this modeling can be applied to shows that we have in the pending status to give us some insights into which shows may be cancelled or renewed.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="TLDR:">TLDR:<a class="anchor-link" href="#TLDR:">&#182;</a></h1><h2 id="Monthly-Analysis">Monthly Analysis<a class="anchor-link" href="#Monthly-Analysis">&#182;</a></h2><p>Netflix is stepping up their original content production and from 2013 to mid 2017 has gone from one show premier every other month</p>
 <h2 id="Yearly-Analysis">Yearly Analysis<a class="anchor-link" href="#Yearly-Analysis">&#182;</a></h2><p>The average show rating per year premiered is declining as netflix is making more shows.</p>
 <h2 id="High-Rating-Analysis">High Rating Analysis<a class="anchor-link" href="#High-Rating-Analysis">&#182;</a></h2><p>There aren't any clear trends in show length or number of episodes for highly ranked shows.</p>
 <h2 id="Genre-Analysis">Genre Analysis<a class="anchor-link" href="#Genre-Analysis">&#182;</a></h2><p>There are clear associations of genre's with IMDB ratings. This shows the areas that netflix is succeeding in with their original content. this seems to mostly be around Drama's, Marvel shows and Docu-Series. It would be interesting to see how this compares with other major content producers (Disney, Warner Media etc)</p>
 <h2 id="Status-Analysis">Status Analysis<a class="anchor-link" href="#Status-Analysis">&#182;</a></h2><p>IMDB rating seems to have a correlation with the Status of the show and at a high level aligns with the various levels of Status from Ongoing to Ended.</p>
 <h2 id="Status-Predictions">Status Predictions<a class="anchor-link" href="#Status-Predictions">&#182;</a></h2><p>Despite not having much data to work with and using a simple model the accuracy in predicting the Status of a show is pretty decent. It would be interesting to get more general data on other companies and content to see how it can compare.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Evaluating-Analysis-Results">Evaluating Analysis Results<a class="anchor-link" href="#Evaluating-Analysis-Results">&#182;</a></h1><h2 id="Question-1-Results">Question 1 Results<a class="anchor-link" href="#Question-1-Results">&#182;</a></h2><p>Netflix is making significantly more content in 2017 from when it first started making original content in 2013. From the monthly rates in 2013 to the monthly premier rates in 2017 there was a ~750% increase in the rate at which netflix has been premiering new original content</p>
+<h2 id="Question-2-Results">Question 2 Results<a class="anchor-link" href="#Question-2-Results">&#182;</a></h2><p>As a whole the mean rating for Original Content shows that Netflix has been producing has been falling. Having said this the drop in IMDB Rating is because Netflix is producing more low quality content but not because Netflix is producing less high rated content. This means that users may have to sift through some more poor quality content but in general there is more high quality content available for them to watch.</p>
+<p>As far as the types of content that have high ratings Netflix is most proficient at making Drama, Marvel, Foreign Language and Docu-Series. These genres have produced the best ratings of netflix shows. Interestingly all of these categories except foreign language seem to have average runtimes between 45 min and 70 min.</p>
+<h2 id="Question-3-Results">Question 3 Results<a class="anchor-link" href="#Question-3-Results">&#182;</a></h2><p>Yes we can sucessfully model our data! For how few observations and features we have and for the simple linear regression model I chose the f1 score results in the .67 range is actually pretty impressive. Furthermore this modeling can be applied to shows that we have in the pending status to give us some insights into which shows may be cancelled or renewed.</p>
 
 </div>
 </div>
